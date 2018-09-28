@@ -14,6 +14,6 @@ class NasdaqcrawlerItem(scrapy.Item):
     date_published = scrapy.Field()
     title = scrapy.Field()
     text = scrapy.Field()
-    label = scrapy.Field()
+    
     
     pass
