@@ -7,6 +7,7 @@
 
 import datetime
 import string
+import calendar
 class NasdaqcrawlerPipeline(object):
     def process_item(self, item, spider):
         item['text'] = item['text'].strip()
@@ -22,10 +23,19 @@ class NasdaqcrawlerPipeline(object):
         date = date.translate(None, string.punctuation)
         #grabbing important parts of date
         temp =date.split(" ")
-        month = temp[0]
+        month = self.month_to_number(temp[0])
         day = temp[1]
         year = temp[2]
-        date = month + " " + day + " " + year
+        date = str(month) + "-" + day + "-" + year
         
         return date
         
+    def month_to_number(self, month):
+        #for some reason scrapy was giving a u in front of the month
+        #This could create some more errors
+        #TODO: Figure out whats wrong with month
+        month = month[1:4]
+
+        month = list(calendar.month_abbr).index(month)
+
+        return month
