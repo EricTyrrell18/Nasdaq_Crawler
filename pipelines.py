@@ -8,6 +8,8 @@
 import datetime
 import string
 import calendar
+import quandl
+import config
 class NasdaqcrawlerPipeline(object):
     def process_item(self, item, spider):
         item['text'] = item['text'].strip()
@@ -26,7 +28,7 @@ class NasdaqcrawlerPipeline(object):
         month = self.month_to_number(temp[0])
         day = temp[1]
         year = temp[2]
-        date = str(month) + "-" + day + "-" + year
+        date = year + "-" + str(month) + "-" + day
         
         return date
         
@@ -36,6 +38,13 @@ class NasdaqcrawlerPipeline(object):
         #TODO: Figure out whats wrong with month
         month = month[1:4]
 
-        month = list(calendar.month_abbr).index(month)
-
+        #https://stackoverflow.com/questions/3418050/month-name-to-month-number-and-vice-versa-in-python
+        month = str(list(calendar.month_abbr).index(month))
+        #Formatting
+        if len(month) < 2:
+            month = '0' + month
+            
+        
         return month
+
+        
