@@ -21,8 +21,7 @@ FEED_URI = 'test.csv'
 # Remove to scrape all of the apple news
 CLOSESPIDER_ITEMCOUNT = 3
 
-# Nasdaq requests a 30 second delay in their robots.txt
-DOUBLOAD_DELAY = 30.0
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'NasdaqCrawler (+http://www.yourdomain.com)'

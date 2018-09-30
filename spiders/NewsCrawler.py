@@ -11,7 +11,9 @@ class NewsSpider(scrapy.Spider):
     name = 'news'
     allowed_domains = ['www.nasdaq.com']
     start_urls = ['https://www.nasdaq.com/symbol/aapl/news-headlines/']
-
+    # Nasdaq.com/robots.txt requests a 30 second crawl delay
+    #Nasdaq might ban your ip if you delete this
+    DOWNLOAD_DELAY = 30.0
     def parse(self, response):
         """scrapes all articles from the aappl/news-headlines"""
         next_selector = response.xpath('//div//li/a[@id="quotes_content_left_lb_NextPage"]/@href')
