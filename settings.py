@@ -19,7 +19,7 @@ FEED_URI = 'test.csv'
 
 # For testing purposes without sending too many requests to nasdaq
 # Remove to scrape all of the apple news
-CLOSESPIDER_ITEMCOUNT = 3
+#CLOSESPIDER_ITEMCOUNT = 3
 
 
 
